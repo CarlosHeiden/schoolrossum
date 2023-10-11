@@ -1,0 +1,21 @@
+body{
+color: rgb(14, 14, 11);
+background: slategray
+}
+
+h1{
+    text-align: center;  /*centraliza o texto*/
+}
+
+a{
+    color: rgb(5, 5, 0);
+}
+
+a:hover{
+    background-color: aliceblue;
+    color: black;
+}
+
+footer{
+    text-align: center;
+}
