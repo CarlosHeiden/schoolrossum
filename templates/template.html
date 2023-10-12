@@ -23,13 +23,28 @@
             <li class="nav-item">
                 <a class="nav-link" href="/editar">Editar</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/login">Logar</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/logout">Sair</a>
+            </li>
         </ul>
     </header>
+    
     <div class="container">
+        {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <ul id="messages" class="list-unstyled">
+        {% for message in messages %}
+            <li class="alert alert-success">{{ message }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+    {% endwith %}
         <div class="page-header">
             <h1>{{titulo}}</h1>
         </div>
-        
         {%block conteudo%}
         {%endblock %}
     </div>
