@@ -1,21 +1,21 @@
 {% extends "template.html" %}
 {%block conteudo%}
-    <form action="/editar", method="get">
+    <form action="{{url_for ('atualizar') }}"method="post">
         <fieldset>
 
             <div>
                 <label for="nome">Nome</label>
-                <input type="text" id="nome" name="nome" placeholder="Digite seu nome: ">
+                <input type="text" id="nome" name="nome" placeholder="Digite seu nome: " class="form-control" value="{{pessoa.nome}}">
             </div>
             <br>
             <div>
                 <label for="idade">Idade</label>
-                <input type="text" id="idade" name="idade" placeholder="Digite sua idade: ">
+                <input type="text" id="idade" name="idade" placeholder="Digite sua idade: " class="form-control" value="{{pessoa.idade}}">
             </div>
             <br>
             <div>
                 <label for="altura">Altura</label>
-                <input type="text" id="altura" name="altura" placeholder="Digite sua altura: ">
+                <input type="text" id="altura" name="altura" placeholder="Digite sua altura: " class="form-control" value="{{pessoa.altura}}">
             </div>
             <br>
             <button type="submit">Salvar</button>
