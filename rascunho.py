@@ -1,21 +1,44 @@
-import socket
-import os
-from flask import Flask, render_template, request, redirect, session, flash, url_for
-from flask_sqlalchemy import SQLAlchemy
+#arquivo usuario.py
 
+from main import db
+
+
+class Usuarios(db.Model):
+    nickname = db.Column(db.String(8), primary_key=True)
+    nome = db.Column(db.String(20), nullable=False)
+    senha = db.Column(db.String(100), nullable=False)
+
+    def __repr__(self):
+        return '<Name%r>' % self.name
+
+#arquivo pessoa.py
+
+from main import db
+
+#injecao de dependencia 
+class Pessoa(db.Model):
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    nome = db.Column(db.String(15), nullable=False)
+    idade = db.Column(db.Integer(40), nullable=False)
+    altura = db.Column(db.String(20), nullable=False)
+
+    def __repr__(self):
+        return '<Name%r>' % self.name
+
+#arquivo main.py
+
+import socket
+from flask import Flask, render_template, request, redirect, session, flash, url_for
 from models.pessoa import Pessoa
 from models.usuario import Usuarios
+from flask_sqlalchemy import SQLAlchemy
 
 
 app = Flask(__name__)
 
 app.secret_key = "123456"
 
-#SQLAlchemy_DATABASE_URL = "sqlite:///C:home/carlos/Documentos/APEX/PYTHON/flask/schoolrossum/banco/aplication.sqlite3"
-
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(app.root_path, 'banco/aplication.sqlite3')
-
-
+SQLAlchemy_DATABASE_URL = "sqlite:///C:home/carlos/Documentos/APEX/PYTHON/flask/schoolrossum/banco/aplication.sqlite3"
 db = SQLAlchemy(app)
 
 lista = Pessoa.query.order_by(Pessoa.id)

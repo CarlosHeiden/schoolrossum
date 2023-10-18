@@ -1,12 +1,8 @@
-from main import db
+class Pessoa:
+    def __init__(self, id, nome, idade):
+        self.id = id
+        self.Nome = nome
+        self.Idade = idade
 
-#injecao de dependencia 
-class Pessoa(db.Model):
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    nome = db.Column(db.String(15), nullable=False)
-    idade = db.Column(db.Integer(40), nullable=False)
-    altura = db.Column(db.String(20), nullable=False)
-
-    def __repr__(self):
-        return '<Name%r>' % self.name
-
+    def __str__(self):
+        return f"Nome: {self.nome}, Idade: {self.idade}"
