@@ -1,11 +1,9 @@
-from models.pessoa  import Pessoa
-class Usuarios():
-    def __init__(self, nome, nickname, senha):
-        self.Nome = nome
-        self.Nickname = nickname
-        self.Senha = senha
+from main import db
 
-    def __str__(self):
-        return f"Nome{self.pessoa}, Nickname: {self.nickname}, Senha: {self.senha}"
 
-        
+class Usuarios(db.Model):
+    nome = db.Column(db.String(15),primary_key=True, nullable=False)
+    senha = db.Column(db.String(15), nullable=False)
+
+    def __repr__(self):
+        return '<Nome%r>' % self.nome

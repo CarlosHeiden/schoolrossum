@@ -1,26 +1,35 @@
-{% extends "template.html" %}
-{%block conteudo%}
-<table class="table table-striped table-dark">
-        <thead>
-            <tr>
-                <th scope="col">Nome</th>
-                <th scope="col">Idade</th>
-                <th scope="col">Altura</th>
-                <th></th>
-            </tr>
-        <thead>
-        <tbody>
+{% extends "template.html"%}
+{% block conteudo %} 
+<table class="table table-dark">
+            
+    <thead>
+        <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">Idade</th>
+            <th scope="col">Altura</th>
+            <th scope="col"></th>
+            
+        </tr>
+    </thead>
+
+    <tbody>
         {% for pessoa in pessoas %}
             <tr>
-                <td><i>{{pessoa.Nome}}</i></td>
-                <td><i>{{pessoa.Idade}}</i></td>
-                <td><i>{{pessoa.Altura}}</i></td>
+                <td>{{ pessoa.nome }}</td>
+                <td>{{ pessoa.idade }}</td>
+                <td>{{ pessoa.altura }}</td>
+
                 <td>
-                    <a href="{{url_for('editar', id=pessoa.id ) }}">Editar</a>
+
+                <td>
+                    <a href="{{ url_for('editar', id=pessoa.id ) }}">Editar</a>
+                    <a href="{{ url_for('deletar', id=pessoa.id ) }}">deletar</a>
                 </td>
             </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-{%endblock%}
-   
+         {% endfor %}
+                
+    </tbody>
+
+</table>
+{% endblock %}
+    
